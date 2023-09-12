@@ -12,8 +12,8 @@ import org.junit.jupiter.api.Test;
 public class CompletebleFutureTest {
     private ExecutorService executor = Executors.newFixedThreadPool(10);
     private Random random = new Random();
-    
-    public Future<String> getValue() {
+
+    public CompletableFuture<String> getValue() {
         CompletableFuture<String> future = new CompletableFuture<>();
 
         executor.execute(() -> {
@@ -32,6 +32,8 @@ public class CompletebleFutureTest {
     @Test
     void getFuture() throws ExecutionException, InterruptedException {
         Future<String> future = getValue();
+        CompletableFuture<String> future2 = getValue().thenApply(val -> val + " new.");
         System.out.println(future.get());
+        System.out.println(future2.get());
     }
 }
