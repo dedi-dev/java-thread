@@ -27,7 +27,7 @@ public class ExecutorServiceTest {
         }
 
         executor.shutdown();
-        executor.awaitTermination(1, TimeUnit.DAYS);
+        executor.awaitTermination(1, TimeUnit.HOURS);
     }
 
     @Test
